@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="style.css">
+    <div class="head">
+        <head>
+            <title>Lab 4</title>
+        </head>
+        <body>
+            <h1 id="heading">
+                INST377 - Lab 4
+            </h1>
+        </body>
+    </div>
+
+    <div class="sections">
+        <div class="box"> <!-- Name Box -->
+            <form action="">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <button onclick="showAlert()">Alert Me!</button><br><br>
+                <script>
+                    function showAlert() {
+                        var inputText = document.getElementById("name").value;
+                        alert("Hello " + inputText + "!");
+                    }
+                </script>
+            </form>
+        </div>
+    </div>
+
+    <div class="sections">
+        <div class="box"> <!-- Color Box -->            
+            <button id="toggleButton">Change Color</button>
+            <script>
+                if (localStorage.getItem('colorMode') === 'enabled') {
+                    document.body.classList.add('change-color');
+                }
+
+                document.getElementById('toggleButton').addEventListener('click', function() {
+                    document.body.classList.toggle('change-color');
+                    if (document.body.classList.contains('change-color')) {
+                        localStorage.setItem('colorMode', 'enabled');
+                    } else {
+                        localStorage.setItem('colorMode', 'disabled');
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="sections">
+        <div class="box"> <!-- Text Tester Box -->
+            <form action="">
+                <label for="name">Text Tester:</label>
+                <input type="text" id="text" name="name" required>
+                <button onclick="validateText()">Validate Text</button><br><br>
+                <script>
+                    function validateText() {
+                        var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                        var inputText = document.getElementById("text").value;
+                        const result = validation.test(inputText) ? alert("How about....nah") : true;
+                    }
+                </script>
+            </form>
+        </div>
+    </div>
+    
+    <div class="sections">
+        <div class="box"> <!-- Text Box -->
+            <button id="addText">Add Text</button>
+            <script>
+                document.getElementById("addText").addEventListener("click", function() {
+                document.getElementById("heading").textContent = "INST377 - Lab 4 - Adding Text";
+                });
+            </script>
+        </div>
+    </div>
+    
+    
+</html>
